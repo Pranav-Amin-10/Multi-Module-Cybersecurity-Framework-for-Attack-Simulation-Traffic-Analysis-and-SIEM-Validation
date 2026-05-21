@@ -1,0 +1,2 @@
+# Multi-Module-Cybersecurity-Framework-for-Attack-Simulation-Traffic-Analysis-and-SIEM-Validation
+Integrated cybersecurity framework for Active Directory attack simulation, SIEM (Wazuh) validation, network traffic analysis, packet inspection, and port scanning. Features real-time monitoring, attack correlation, Wireshark-style packet analysis, and automated SOC-style reporting using Python, Scapy, Nmap, and PySide6.
