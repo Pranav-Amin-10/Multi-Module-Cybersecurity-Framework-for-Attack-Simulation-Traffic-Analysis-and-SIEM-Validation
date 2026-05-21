@@ -1,0 +1,8 @@
+paramiko
+requests
+urllib3
+reportlab
+pyside6
+matplotlib
+scapy
+python-nmap

