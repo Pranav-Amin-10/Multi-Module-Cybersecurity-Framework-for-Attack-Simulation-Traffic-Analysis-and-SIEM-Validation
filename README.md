@@ -1,54 +1,142 @@
-The UI provides:
+# 🔐 Integrated Active Directory Attack Detection, Packet Analysis and SIEM Validation Framework
 
-- AD attack validation
-- Packet capture
-- Port scanning
-- HTML report generation
+A multi-module cybersecurity framework designed to simulate real-world Active Directory attacks, validate Wazuh SIEM detections, analyze network packets, and perform security assessments inside a controlled enterprise-style lab environment.
 
-The Network Analyzer module has been removed.
+Built using **Python, PySide6, Wazuh API, Scapy, Nmap, and VMware**, this project provides a practical platform for validating detection pipelines, analyzing attacker behavior, and generating SOC-style security reports.
 
-## Lab Topology
+---
 
-Default lab hosts are configured in `config.py`:
+# 🚀 Features
 
-| Host | Default IP |
-| --- | --- |
-| DC01 | `192.168.56.10` |
-| WIN10 | `192.168.56.20` |
-| Kali | `192.168.56.30` |
-| Wazuh | `192.168.56.50` |
+## 🛡 Active Directory Attack Validation
 
-## AD Attack Flow
+* Execute attacks remotely on Kali Linux via SSH
+* Validate SIEM detections against generated attack activity
+* Correlate expected vs actual Windows Event IDs
+* Calculate:
 
-For each AD attack, the framework:
+  * Detection Rate
+  * False Positives
+  * False Negatives
+  * Detection Delays
 
-1. Connects to Kali over SSH.
-2. Runs the configured Kali tool command.
-3. Waits for Wazuh log ingestion.
-4. Reads recent Wazuh alerts from `/var/ossec/logs/alerts/alerts.json`.
-5. Matches expected Windows Event IDs.
-6. Calculates detection metrics.
-7. Generates an HTML SOC report.
+---
 
-## Included AD Attack Types
+## 📡 Packet Capture & Analysis (Mini Wireshark)
 
-Configured attacks include:
+* Real-time packet capture using Scapy
+* IPv4 packet parsing
+* Protocol identification
+* Source/Destination IP tracking
+* TCP/UDP port analysis
+* PCAP save/load support
+* Wireshark-style packet table UI
 
-- SMB brute force
-- RDP brute force
-- PsExec remote execution
-- SMB share enumeration
-- SMB password spray
-- WinRM brute force
-- Evil-WinRM login
-- Kerberos user enumeration
-- AS-REP roasting
-- Kerberoasting
-- LDAP RootDSE enumeration
-- BloodHound collection
-- DCSync attempt
+---
 
-## Requirements
+## 🔍 Port Scanner
+
+* Fast Nmap-based scanning
+* Open port detection
+* Service enumeration
+* Security recommendations based on exposed services
+
+---
+
+## 📄 SOC-Style Reporting
+
+* Automated HTML/PDF report generation
+* Detailed attack analysis
+* Packet summaries
+* Detection metrics
+* Security recommendations
+* Structured SOC-style layouts
+
+---
+
+# 🧱 Lab Topology
+
+Default lab hosts configured in `config.py`:
+
+| System                   | IP Address      |
+| ------------------------ | --------------- |
+| DC01 (Domain Controller) | `192.168.56.10` |
+| WIN10 Client             | `192.168.56.20` |
+| Kali Linux               | `192.168.56.30` |
+| Wazuh Server             | `192.168.56.50` |
+
+---
+
+# ⚔️ Active Directory Attack Flow
+
+For every simulated AD attack, the framework:
+
+1. Connects to Kali Linux via SSH
+2. Executes attack tools remotely
+3. Waits for Wazuh log ingestion
+4. Collects alerts from Wazuh
+5. Correlates attack activity with detections
+6. Calculates SIEM effectiveness metrics
+7. Generates professional security reports
+
+---
+
+# 🎯 Included Active Directory Attack Simulations
+
+| Attack                    | Purpose                                      |
+| ------------------------- | -------------------------------------------- |
+| SMB Brute Force           | Validate failed login detection              |
+| RDP Brute Force           | Test remote access attack monitoring         |
+| PsExec Remote Execution   | Simulate lateral movement                    |
+| SMB Share Enumeration     | Detect reconnaissance activity               |
+| SMB Password Spray        | Validate stealth credential attack detection |
+| WinRM Brute Force         | Test WinRM authentication monitoring         |
+| Evil-WinRM Login          | Simulate remote PowerShell access            |
+| Kerberos User Enumeration | Detect user discovery attempts               |
+| AS-REP Roasting           | Simulate Kerberos credential extraction      |
+| Kerberoasting             | Validate service ticket abuse detection      |
+| LDAP RootDSE Enumeration  | Detect AD information gathering              |
+| BloodHound Collection     | Simulate attack path enumeration             |
+| DCSync Attempt            | Detect domain replication abuse              |
+
+---
+
+# 🧰 Technology Stack
+
+| Component         | Technology |
+| ----------------- | ---------- |
+| Language          | Python 3   |
+| GUI               | PySide6    |
+| SIEM              | Wazuh      |
+| Packet Analysis   | Scapy      |
+| Port Scanning     | Nmap       |
+| SSH Communication | Paramiko   |
+| Reporting         | ReportLab  |
+| Virtualization    | VMware     |
+
+---
+
+# 📂 Project Structure
+
+```txt
+ad_siem_framework/
+├── attack_module.py
+├── collector.py
+├── correlator.py
+├── analyzer.py
+├── reporter.py
+├── packet_analyzer.py
+├── port_scanner.py
+├── ui_app.py
+├── config.py
+├── utils.py
+├── logs/
+└── reports/
+```
+
+---
+
+# ⚙️ Requirements
 
 Install dependencies:
 
@@ -56,51 +144,79 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-The Kali VM must have the referenced attack tools installed, such as:
+---
 
-- CrackMapExec
-- Hydra
-- Impacket
-- Evil-WinRM
-- Kerbrute
-- ldapsearch
-- bloodhound-python
+# 🧪 Required Kali Tools
 
-Packet capture may require administrator/root privileges and a working packet capture backend.
+The Kali VM should contain tools such as:
 
-Port scanning requires nmap installed and available on PATH.
+* CrackMapExec
+* Hydra
+* Impacket
+* Evil-WinRM
+* Kerbrute
+* ldapsearch
+* bloodhound-python
 
-## Reports And Logs
+---
 
-Generated logs are stored in:
+# 📡 Packet Capture Requirements
+
+Packet capture requires:
+
+* Npcap/WinPcap (Windows)
+* Administrator privileges
+* Working network capture interface
+
+---
+
+# 🔍 Port Scanning Requirements
+
+Nmap must be installed and available in system PATH.
+
+---
+
+# 📄 Reports & Logs
+
+Generated artifacts are stored in:
 
 ```txt
 logs/
-```
-
-Generated HTML reports are stored in:
-
-```txt
 reports/
 ```
 
-## Configuration
+---
 
-Primary configuration is in:
+# ⚙️ Configuration
+
+Primary configuration file:
 
 ```txt
 config.py
 ```
 
-No `.env` file is required. The project uses default lab values directly from `config.py`.
+Contains:
 
-Some values can optionally be overridden through environment variables, but this is not required for normal lab demonstration.
+* VM IPs
+* Credentials
+* Attack mappings
+* Wazuh configuration
+* Reporting settings
 
-## Safety Note
+---
 
-Run this framework only inside a lab where you have explicit permission to execute attacks and collect logs.
-```
+# 🛑 Safety Notice
 
-Next file: `collector.py`
+This project is intended strictly for:
 
-I want to revisit it once more because it connects directly to Wazuh and must align perfectly with the updated correlation logic. Please send the current final version you plan to use for `collector.py`.
+* Educational purposes
+* Security research
+* Authorized lab environments
+
+Do not use against systems without explicit permission.
+
+---
+
+# 👨‍💻 Author
+
+Developed as an academic cybersecurity project focused on Active Directory attack simulation, SIEM validation, packet analysis, and enterprise security monitoring within a controlled lab environment.
