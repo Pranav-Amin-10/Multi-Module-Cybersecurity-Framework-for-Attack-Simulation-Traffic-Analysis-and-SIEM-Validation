@@ -10,17 +10,17 @@ raw alert for detailed AD event correlation.
 
 import json
 import os
-from datetime import datetime, timedelta, timezone
+import datetime
 
 import paramiko
 
-from config import LAB_CONFIG, FRAMEWORK_CONFIG
-from utils import print_status, print_success, print_error, log_event
+import config
+import utils
 
 
 class WazuhCollector:
     def __init__(self):
-        wazuh_config = LAB_CONFIG["WAZUH_API"]
+        wazuh_config = config.LAB_CONFIG["WAZUH_API"]
 
         self.host = wazuh_config["host"]
         self.username = os.getenv("WAZUH_SSH_USER", "wazuh")
@@ -29,7 +29,7 @@ class WazuhCollector:
 
     def _connect(self):
         try:
-            print_status("Connecting to Wazuh via SSH...")
+            utils.print_status("Connecting to Wazuh via SSH...")
 
             ssh = paramiko.SSHClient()
             ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
@@ -43,11 +43,11 @@ class WazuhCollector:
                 auth_timeout=10,
             )
 
-            print_success("SSH connected to Wazuh")
+            utils.print_success("SSH connected to Wazuh")
             return ssh
 
         except Exception as e:
-            print_error(f"SSH connection failed: {e}")
+            utils.print_error(f"SSH connection failed: {e}")
             return None
 
     def _parse_wazuh_timestamp(self, value):
@@ -64,12 +64,12 @@ class WazuhCollector:
 
         for fmt in formats:
             try:
-                return datetime.strptime(value, fmt)
+                return datetime.datetime.strptime(value, fmt)
             except ValueError:
                 pass
 
         try:
-            return datetime.fromisoformat(value.replace("Z", "+00:00"))
+            return datetime.datetime.fromisoformat(value.replace("Z", "+00:00"))
         except ValueError:
             return None
 
@@ -86,12 +86,12 @@ class WazuhCollector:
             return False
 
         if parsed.tzinfo:
-            parsed = parsed.astimezone(timezone.utc)
-            now = datetime.now(timezone.utc)
+            parsed = parsed.astimezone(datetime.timezone.utc)
+            now = datetime.datetime.now(datetime.timezone.utc)
         else:
-            now = datetime.now()
+            now = datetime.datetime.now()
 
-        past = now - timedelta(minutes=FRAMEWORK_CONFIG["time_window_minutes"])
+        past = now - datetime.timedelta(minutes=config.FRAMEWORK_CONFIG["time_window_minutes"])
         return parsed >= past
 
     def _get_windows_event_id(self, alert):
@@ -140,7 +140,7 @@ class WazuhCollector:
         target = str(target).strip().lower()
         self._add_alias(aliases, target)
 
-        for host_key, host_config in LAB_CONFIG.items():
+        for host_key, host_config in config.LAB_CONFIG.items():
             if not isinstance(host_config, dict):
                 continue
 
@@ -218,9 +218,9 @@ class WazuhCollector:
             return []
 
         try:
-            print_status("Reading alerts.json from Wazuh...")
+            utils.print_status("Reading alerts.json from Wazuh...")
 
-            max_alerts = FRAMEWORK_CONFIG["max_alerts_fetch"]
+            max_alerts = config.FRAMEWORK_CONFIG["max_alerts_fetch"]
             cmd = f"tail -n {max_alerts} {self.log_path}"
 
             stdin, stdout, stderr = ssh.exec_command(cmd)
@@ -229,7 +229,7 @@ class WazuhCollector:
             error = stderr.read().decode(errors="replace").strip()
 
             if error:
-                print_error(f"Wazuh log read warning: {error}")
+                utils.print_error(f"Wazuh log read warning: {error}")
 
             alerts = []
 
@@ -247,16 +247,16 @@ class WazuhCollector:
                     alerts.append(normalized)
 
             if target:
-                print_success(f"Collected {len(alerts)} alerts from logs for target {target}")
+                utils.print_success(f"Collected {len(alerts)} alerts from logs for target {target}")
             else:
-                print_success(f"Collected {len(alerts)} alerts from logs")
+                utils.print_success(f"Collected {len(alerts)} alerts from logs")
 
-            log_event("wazuh_alerts.json", alerts)
+            utils.log_event("wazuh_alerts.json", alerts)
 
             return alerts
 
         except Exception as e:
-            print_error(f"Log fetch error: {e}")
+            utils.print_error(f"Log fetch error: {e}")
             return []
 
         finally:
@@ -269,8 +269,8 @@ class WazuhCollector:
         alerts = self.fetch_alerts(target)
 
         if not alerts:
-            print_error("No alerts collected (check Wazuh agent/logs)")
+            utils.print_error("No alerts collected (check Wazuh agent/logs)")
         else:
-            print_success("Alerts successfully collected")
+            utils.print_success("Alerts successfully collected")
 
         return alerts
